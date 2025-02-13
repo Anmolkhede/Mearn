@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 4</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="Task 4.css">
+</head>
+
+<body>
+  <div class=" flex justify-center h-screen align-middle items-center bg-black text-white ">
+    <div class="p-20 bg-black opacity-50 gap-10  rounded-lg border-white border-2 shadow-sm shadow-cyan-50">
+      <h1 class="text-center text-2xl mb-4">login</h1>
+      <h1 id="msg" class="text-center mb-4"></h1>
+
+      <input type="text" id="uname" class="border-white border-2 p-2 rounded-lg mb-4" placeholder="Enter your name" />
+      <br />
+      <input type="password" id="password" class="border-white border-2 p-2 rounded-lg mb-4"
+        placeholder="Enter your name" />
+      <br />
+      <div class="flex justify-center ">
+        <button onClick="funlogin()"
+          class="text-xl border-2 border-white py-1 px-3 rounded-lg shadow-sm text-white shadow-white hover:shadow cursor-pointer">
+          login
+        </button>
+      </div>
+      <br />
+    </div>
+  </div>
+  <script>
+    function funlogin() {
+      var username = document.getElementById("uname").value;
+      var pass = document.getElementById("password").value;
+      var msg = document.getElementById("msg");
+      if (username == "" && pass == "") {
+        msg.innerHTML = "plz feild all feilds";
+        return;
+      }
+      if (username == "anmol" && pass == "khede") {
+        msg.innerHTML = "login success";
+      } else {
+        msg.innerHTML = "login failed";
+      }
+    }
+  </script>
+</body>
+
+</html>
