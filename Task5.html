@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Array Methods</title>
+</head>
+
+<body class="bg-black text-white ">
+    <div class=" flex justify-center h-screen align-middle items-center bg-black text-white ">
+        <div class="p-30 bg-black  gap-10  rounded-sm border-white border-2 ">
+            <h1 class="text-center text-2xl mb-8"> Javascript - Search </h1>
+            <input type="text" id="search" onkeyup="search()" class="border-white border-2 p-2 rounded-lg mb-4"
+                placeholder="search name">
+            <h1 class="text-center text-2xl mb-4">Name of Students</h1>
+            <ul id="list" class="text-center  border-white border-b-2"></ul>
+        </div>
+    </div>
+
+
+    <script>
+        var array = ["anmol", "ram", "shaym", "puja"]
+        function letestdata(array) {
+            var modified_array = array.map((a) => "<li class= 'border-t-2 border-white'>" + a + "</li>")
+            document.getElementById('list').innerHTML = modified_array.join("")
+        }
+
+        function search() {
+            var searchvalue = document.getElementById('search').value
+            var filterlist = array.filter((a) => a.startsWith(searchvalue))
+            if (filterlist.length == 0) {
+                document.getElementById('list').innerHTML = "user not found"
+
+            } else {
+                letestdata(filterlist)
+            }
+
+        }
+        letestdata(array)
+    </script>
+
+</body>
+
+</html>
