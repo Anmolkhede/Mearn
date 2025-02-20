@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-black text-white flex justify-center items-center min-h-screen">
+    <div class="flex flex-col items-center w-full max-w-lg space-y-4 border-1 border-gray-600 p-20 rounded-lg bg-slate-950/5">
+        <h1 class="text-center text-2xl mb-8"> Javascript  Search  Task:- 2</h1>
+        <input type="text" id="search" onkeyup="search()"
+            class="w-full p-3 rounded-lg bg-slate-950/5 text-white border border-gray-600 " placeholder="Search...">
+
+        <div class="flex gap-4">
+            <label class="flex items-center gap-2">
+                <input type="radio" id="name" name="btn" onclick="chack('name')" checked
+                    class="form-radio text-blue-500">
+                Name
+            </label>
+            <label class="flex items-center gap-2">
+                <input type="radio" id="city" name="btn" onclick="chack('city')" class="form-radio text-blue-500">
+                City
+            </label>
+            <label class="flex items-center gap-2">
+                <input type="radio" id="age" name="btn" onclick="chack('age')" class="form-radio text-blue-500">
+                Age
+            </label>
+        </div>
+
+        <table class="w-full border border-gray-700 text-center">
+            <thead>
+                <tr class="bg-slate-950/5">
+                    <th class="p-3 border border-gray-700">Name</th>
+                    <th class="p-3 border border-gray-700">City</th>
+                    <th class="p-3 border border-gray-700">Age</th>
+                </tr>
+            </thead>
+            <tbody id="list"></tbody>
+        </table>
+    </div>
+
+    <script>
+        var list = document.getElementById('list');
+        var obj = [
+            {
+                name: "Anmol",
+                sruname: "Khede",
+                age: 20,
+                city: "Khandwa"
+            },
+            {
+                name: "Ram",
+                sruname: "Mandloi",
+                age: 10,
+                city: "Pune"
+            },
+            {
+                name: "ajay",
+                sruname: "rathod",
+                age: 20,
+                city: "khalwa"
+            },  
+            {
+                name: "krishna",
+                sruname: "pagare",
+                age: 22,
+                city: "mumbai"
+            },
+        ];
+
+        function letestdata(obj) {
+            var modified_array = obj.map((a) =>
+                `<tr class="border border-gray-700">
+                    <td class="p-3 border border-gray-700">${a.name}</td>
+                    <td class="p-3 border border-gray-700">${a.city}</td>
+                    <td class="p-3 border border-gray-700">${a.age}</td>
+                </tr>`
+            ).join("");
+
+            document.getElementById('list').innerHTML = modified_array ||
+                `<tr><td colspan="3" class="text-center p-3 text-red-500">User not found</td></tr>`;
+        }
+
+        var k = "name";
+        function search() {
+            var searchvalue = document.getElementById('search').value.toLowerCase();
+
+            var filterlist = obj.filter((a) => {
+                switch (k) {
+                    case "name":
+                        return a.name.toLowerCase().startsWith(searchvalue);
+                    case "city":
+                        return a.city.toLowerCase().startsWith(searchvalue);
+                    case "age":
+                        return a.age.toString().startsWith(searchvalue);
+                }
+            });
+
+            letestdata(filterlist);
+        }
+
+        function chack(a) {
+            k = a;
+        }
+
+        letestdata(obj);
+    </script>
+</body>
+
+</html>
