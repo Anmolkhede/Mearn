@@ -8,84 +8,91 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 
-<body>
-    <div class=" flex justify-center h-screen align-middle items-center bg-black text-white">
-        <div class="p-20 bg-black opacity-50 gap-10  rounded-lg border-white border-2 shadow-sm shadow-cyan-50">
-            <h1 class="text-center text-4xl mb-4">Calculator</h1>
-            <div class="flex justify-between  ">
-                <input type="text" id="input1" class="border-white border-2 p-2 rounded-lg mb-4 "
-                    placeholder="Input 1" />
-                <input type="text" id="input2" class="border-white border-2 p-2 rounded-lg mb-4 "
-                    placeholder="Input 2" />
-            </div>
-
-            <br />
-            <div class="flex justify-center  gap-10">
-                <button
-                    class="text-xl border-2 border-white py-1 px-3 rounded-lg shadow-sm shadow-white hover:shadow cursor-pointer"
-                    onClick='operation("add")'>
-                    ADD
-                </button>
-                <button
-                    class="text-xl border-2 border-white py-1 px-3 rounded-lg shadow-sm shadow-white hover:shadow cursor-pointer"
-                    onClick='operation("sub")'>
-                    SUB
-                </button>
-                <button
-                    class="text-xl border-2 border-white py-1 px-3 rounded-lg shadow-sm shadow-white hover:shadow cursor-pointer"
-                    onClick='operation("divi")'>
-                    DIVIDE
-                </button>
-                <button
-                    class="text-xl border-2 border-white py-1 px-3 rounded-lg shadow-sm shadow-white hover:shadow cursor-pointer"
-                    onClick='operation("mul")'>
-                    MUL
-                </button>
-
-            </div>
-            <br />
-            <h1 id="show" class="text-center mb-4"></h1>
-        </div>
+<body class="bg-black h-screen"
+>
+  <div class="flex items-center justify-center min-h-screen bg-no-repeat bg-cover "style="background-image: url('undraw_mobile-content_yz21.svg')">
+<div class="bg-white rounded-lg p-8 w-full max-w-lg">
+  <h1 class="text-3xl font-bold text-center mb-6"> Calculator</h1>
+  <div class=" rounded-lg p-6">
+    <div class="mb-4 flex gap-2">
+      <input type="text" id="input" placeholder="Enter calculation" class="rounded w-full py-3 px-4 text-gray-700 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded" onclick="clearInput()">C</button>
     </div>
+    <div class="grid grid-cols-4 gap-2">
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('1')">1</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('2')">2</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('3')">3</button>
+      <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" onclick="add('+')">+</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('4')">4</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('5')">5</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('6')">6</button>
+      <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" onclick="add('-')">-</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('7')">7</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('8')">8</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('9')">9</button>
+      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" onclick="calculate()">=</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('0')">0</button>
+      <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('.')">.</button>
+      <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" onclick="add('*')">*</button>
+      <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" onclick="add('/')">/</button>
+    </div>
+  </div>
+</div>
+  <!-- <div class="container mx-auto mt-10">
+    <div class="w-full max-w-lg mx-auto">
+      <h1 class="text-center text-2xl font-bold mb-10">Calculator</h1>
+      <div class="bg-black/10   rounded-xl p-10 h-96 mb-4 ">
+        <div class="mb-4 flex gap-2">
+          <input type="text" id="input" placeholder="calculate" class="rounded w-full py-10 px-3    text-gray-700" >
+          <button class="bg-red-500 hover:bg-red-600 text-white font-bold p-11 rounded col-span-2" onclick="clearInput()">C</button>
 
-    <script>
-          const operation = (a) => {
-    var input1 = document.getElementById("input1").value;
-    var input2 = document.getElementById("input2").value;
-    var show = document.getElementById("show");
-    var res;
-    switch (a) {
-      case "add":
-        res = parseInt(input1) + parseInt(input2);
-        show.innerHTML =
-          "your addition of " + input1 + " & " + input2 + " is " + res;
-      
-        break;
-      case "sub":
-        res = parseInt(input1) - parseInt(input2);
-        show.innerHTML =
-          "your subtraction of " + input1 + " & " + input2 + " is " + res;
-          input1.innerHTML = "";
-        break;
+        </div>
+        <div class="bg-black/10">
 
-      case "mul":
-        res = parseInt(input1) * parseInt(input2);
-        show.innerHTML =
-          "your multiplication of " + input1 + " & " + input2 + " is " + res;
-          input1.innerHTML = "";
-        break;
+        </div>
+        <div class="bg-black/10 w-full">
 
-      case "divi":
-        res = parseInt(input1) / parseInt(input2);
-        show.innerHTML =
-          "your devision of " + input1 + " & " + input2 + " is " + res;
-          input1.innerHTML = "";
-        break;
-      default:
-        show.innerHTML = "Invalid operation!";
+        </div>
+        <div class="grid grid-cols-4 gap-2 ">
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('1')">1</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('2')">2</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('3')">3</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('+')">+</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('4')">4</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('5')">5</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('6')">6</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('-')">-</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('7')">7</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('8')">8</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('9')">9</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="calculate()">=</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('0')">0</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('.')">.</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('*')">*</button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="add('/')">/</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+  <script>
+    function add(value) {
+      document.getElementById('input').value += value;
     }
-  };
-    </script>
+
+    function calculate() {
+      try {
+        document.getElementById('input').value = eval(document.getElementById('input').value);
+      } catch (e) {
+        document.getElementById('input').value = 'Error';
+      }
+    }
+
+    function clearInput() {
+      document.getElementById('input').value = '';
+    }
+  </script>
 </body>
 
 </html>
